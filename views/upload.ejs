@@ -1,0 +1,50 @@
+<%- include("includes/header") %> 
+
+        <% if(tiedot){ %>
+          <h1><%= otsikkoTaiteilu.split('.').slice(0, -1).join('.') %></h1>
+
+          <% let askeleet = 0; %>
+          <% let askeleetYhteensa = tiedot.reduce((luku_1, luku_2) => luku_1 + luku_2.askeleet, askeleet); %>  
+
+          <h3>Askeleita yhteensä: <%= askeleetYhteensa %> askelta. Keskimäärin <%= (askeleetYhteensa/tiedot.length).toFixed(0) %> askelta päivässä.</h3>
+          <table class="mdl-data-table">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Pvm</th>
+                <th class="mdl-data-table__cell--non-numeric">Askeleet</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% tiedot.forEach((tieto) => { %> 
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric "><%= tieto.pp %>.<%= tieto.kk %>.<%= tieto.vvvv %> </td>
+                    <td class="mdl-data-table__cell--non-numeric"><%= tieto.askeleet %></td>
+                </tr>
+                <% }); %> 
+            </tbody>
+          </table>
+          <% } else{ %>
+            <h2>Ei kuukautta</h2>
+
+            <h3>Askeleita yhteensä: 0 . Keskimäärin 0 askelta päivässä.</h3>
+            <table class="mdl-data-table">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Pvm</th>
+                  <th class="mdl-data-table__cell--non-numeric">Askeleet</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td class="mdl-data-table__cell--non-numeric ">0</td>
+                      <td class="mdl-data-table__cell--non-numeric">0</td>
+                  </tr>
+              </tbody>
+            </table>
+            <% } %>   
+
+
+        <a href="/" class="mdl-button mdl-button--raised mdl-button--colored">Alkuun</a>
+
+
+<%- include("includes/footer") %>

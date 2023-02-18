@@ -1,0 +1,21 @@
+<%- include("includes/header") %> 
+
+    <h2>Valitse tiedosto jota haluat tarkastella</h2>
+
+    <% if (Boolean(virhe)) { %>
+        
+        <div class="virhe"><%= virhe %> </div>
+
+    <% } %> 
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <div class="mdl-textfield">
+            <input type="file" class="mdl-textfield__input" name="tiedosto" id="tiedosto">
+            <label class="mdl-textfield__label" for="tiedosto">Tiedosto</label>
+        </div>
+
+        <button type="submit" class="mdl-button mdl-button--raised mdl-button--colored">Tarkastele tiedostoa</button>
+    </form>
+
+<%- include("includes/footer") %> 
